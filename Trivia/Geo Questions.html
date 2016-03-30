@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<title>Trivia Game</title>
+<h1 class="title" align="center">Geography Trivia!!!<h1>
+
+<style>
+	.title{
+		font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+		color:cyan;
+		font-size:xx-large;
+	}
+	body{
+		background-image:url(TriviaGame.png);
+	}
+	.p1{
+		font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+		color:white;
+		font-size:xx-large;
+		
+	}
+	.cool{
+		position:absolute;
+		left:300px;
+		top:250px;
+	}
+	.cool2{
+		position:absolute;
+		left:450px;
+		top:200px;
+	}
+	
+</style>
+
+</head>
+<body>
+<p class="p1" id="quest" align="center">What is the most spoken language in the world?</p>
+
+
+<div>
+	<input type="text" class="cool" id="answerKey">
+</div>
+
+<div class="btn-group" role="group" aria-label="...">
+  <button class="cool2" type="button" class="btn btn-default" id="Button">Skip</button>
+
+</div>
+
+
+</body>
+<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-
+0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+<script>
+var questions = ["What is the most spoken language in the world?", "What is the smallest country by area in the world?", "What is the national animal of Scotland?", "What is the tallest waterfall in the world?", "Which is the least populated state in the USA?", "What is the largest country in the world?", "What is the longest river in the world?", "Where is the deepest point in the ocean?", "Largest continent by surface area?", "Number of UN recognized countries?", "What is the capital of Montserrat", "What is the capital of Bahrain", "Ouagadougou is the capital of this country", "In what country is Mount St. Helen located?", "In what state is the Grand Canyon located?", "Which country contains the greatest number of fresh water lakes?", "Which US state shares the longest border with Canada?", "What is the name of the body of water that separates China and Korea?", "What is the largest lake entirely in Canada?", "What is the name of the longest above-ground mountain range in the world?"]
+var cur=0;
+var answer = ["Mandarin", "Vatican City", "The Unicorn", "Angel Falls", "Wyoming", "Russia", "Nile", "Mariana Trench", "Asia", "193", "Plymouth", "Manama", "Burkina Faso", "United States", "Arizona", "Canada", "Alaska", "The Yellow Sea", "The Great Bear Lake", "Andes"]
+
+$("#answerKey").change( function()  {
+	//if (answerKey == "yes") {
+		
+		if(cur >= 20) {
+			alert("Congrats, you finished this topic!")
+		}
+		//if( $(this).val() == answer[cur] ) alert("yes");
+		if($(this).val() == answer[cur] ){
+	  			cur = cur + 1;
+				$("#answerKey").val("");
+				$("#quest").html( questions[cur]);
+				 
+				 
+		}
+		else {
+			alert("Incorrect, try again")
+		}
+		
+	//}
+});
+$("#Button").click(function() {
+		alert(answer[cur]);
+		cur = cur + 1;
+		$("#quest").html(questions[cur]);
+});
+</script>
+
+</html>
