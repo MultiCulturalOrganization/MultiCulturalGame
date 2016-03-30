@@ -13,7 +13,6 @@ var ColRay = ["#cc0000", "#ff9900", "#ffff00", "#009933", "#0000ff", "#4b0082"];
 var white = "#ffffff";
 var pink = "#ff0066";
 
-
 var canvas = document.getElementById("myCanvas"); //this is the canvas
 var ctx = canvas.getContext("2d");
 var PaddleHeight = 8; //paddle height
