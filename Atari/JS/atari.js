@@ -141,9 +141,9 @@ function Bricks() {
 			if(drawseven = true) {
 				BallDisplacementY = -BallDisplacementY;
 				drawseven = false;
-
-			}//if drawseven
 				score+=100;
+			}//if drawseven
+
 		}//if Y
 	}//if X
 
@@ -222,8 +222,7 @@ function Score() {
 	ctx.font = "20px Arial";
 	 ctx.fillStyle = pink;
 	 ctx.fillText("Score: "+score, 0, 20);
-
-}
+}//Score
 
 //---------------------------Draw everything all functions----------------------
 /*
@@ -232,12 +231,10 @@ This is drawing everything
 function draw() {
 
 		clear();
-
 	 	Background(); //sequential so need to draw this first
     Paddle();
 		BoxCollision();
 		PaddleCollision();
-
 		Ball(); //sequential
     Move();
 		Bricks();
