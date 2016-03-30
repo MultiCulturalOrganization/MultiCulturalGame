@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html">
+<html>
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -13,13 +13,13 @@
 		font-size:xx-large;
 	}
 	body{
-		background-image:url(TriviaGame.png);
+		background-image:url(IMAGES/TriviaGame.png);
 	}
 	.p1{
 		font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 		color:white;
 		font-size:xx-large;
-		
+
 	}
 	.cool{
 		position:absolute;
@@ -31,7 +31,7 @@
 		left:450px;
 		top:200px;
 	}
-	
+
 </style>
 
 </head>
@@ -62,7 +62,7 @@ var answer = ["Medusa", "1789", "Blue", "Liberty Island", "0", "Mayflower", "179
 
 $("#answerKey").change( function()  {
 	//if (answerKey == "yes") {
-		
+
 		if(cur >= 19) {
 			alert("Congrats, you finished this topic!")
 		}
@@ -71,13 +71,13 @@ $("#answerKey").change( function()  {
 	  			cur = cur + 1;
 				$("#answerKey").val("");
 				$("#quest").html( questions[cur]);
-				 
-				 
+
+
 		}
 		else {
 			alert("Incorrect, try again")
 		}
-		
+
 	//}
 });
 $("#Button").click(function() {
