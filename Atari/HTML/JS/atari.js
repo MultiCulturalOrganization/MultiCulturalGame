@@ -1,5 +1,5 @@
 /*
-Surin Rao  Mar 30 2016 Scrum 2 Atari
+Surin Rao  Mar 29 2016  Atari
 Super helpful: http://cheatsheetworld.com/programming/html5-canvas-cheat-sheet/
 */
 
