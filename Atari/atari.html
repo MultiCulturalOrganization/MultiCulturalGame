@@ -1,0 +1,197 @@
+<html>
+	<head>
+    <meta charset="utf-8" />
+    <title>Surin's Mini Game ATARI</title>
+    <center><h1>Atari Breakout</h1> </center>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="1000" height="600" ></canvas>
+
+<script>
+
+/*
+Surin Rao  Mar 8 2016 Scrum 1 Atari
+//Super helpful:     http://cheatsheetworld.com/programming/html5-canvas-cheat-sheet/
+*/
+
+
+//-------------------------------Variables ----------------------------------------------------------------
+
+
+var green = "#009933";
+var red = "#ff0000";
+var blue = "#0000ff";
+var orange = "#ff9900";
+var purple = "#660066";
+var yellow = "#ffff00";
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var PaddleHeight = 10;
+var PaddleWidth = 75;
+var StartingX = (canvas.width-PaddleWidth)/2;
+var rightPressed = false;
+var leftPressed = false;
+var Displacement = 5;
+
+
+
+//------------------------------Make Paddle-----------------------------------------------------------------
+
+
+
+function KeyPressed(e) {
+    if(e.keyCode == 39) {
+        rightPressed = true;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = true;
+    }
+}
+function KeyReleased(e) {
+    if(e.keyCode == 39) {
+        rightPressed = false;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = false;
+    }
+}
+
+
+function Paddle() {
+    ctx.beginPath();
+    ctx.rect(StartingX, canvas.height-PaddleHeight, PaddleWidth, PaddleHeight);
+    ctx.fillStyle = "#ff0066";
+    ctx.fill();
+    ctx.closePath();
+}
+
+    
+
+//---------------------------------- Bricks-------------------------------------------------------------------
+
+//Used this idea for the link game we made a while ago
+
+
+function Bricks() {
+    for(var i=0; i<1000; i +=150) {
+
+        BricksRow1();
+        BricksRow2();
+        BricksRow3();
+        BricksRow4();
+        BricksRow5();  
+        Bricks6();
+               
+    } // for loop i
+
+    function BricksRow1() {
+        for(var timeshit =0; timeshit < 6; timeshit++) {
+            for(var k=0; k< 50; k +=50) {
+                ctx.beginPath();
+                ctx.rect(i, k, 100, 20);
+                ctx.fillStyle = green;
+                ctx.fill();
+                ctx.closePath();
+            } //for loop
+        }//times hit
+    } //row1
+
+    function BricksRow2() {
+        for(var timeshit =0; timeshit < 5; timeshit++) {
+            for(var k=50; k< 100; k +=50) {
+                ctx.beginPath();
+                ctx.rect(i, k, 100, 20);
+                ctx.fillStyle = red;
+                ctx.fill();
+                ctx.closePath();
+            }//for
+        }//times hit
+    }//row2
+    function BricksRow3() {
+        for(var timeshit =0; timeshit < 4; timeshit++) {
+            for(var k=100; k< 150; k +=50) {
+                ctx.beginPath();
+                ctx.rect(i, k, 100, 20);
+                ctx.fillStyle = blue;
+                ctx.fill();
+                ctx.closePath();
+            }//for k
+        }//times hit
+     }//row3
+    function BricksRow4() {
+         for(var timeshit =0; timeshit < 3; timeshit++) {   
+            for(var k=150; k< 200; k +=50) {
+                ctx.beginPath();
+                ctx.rect(i, k, 100, 20);
+                ctx.fillStyle = orange;
+                ctx.fill();
+                ctx.closePath();
+            }//for k
+        }//times hit
+     }//row4
+     function BricksRow5() {
+        for(var timeshit =0; timeshit < 2; timeshit++) {
+            for(var k=200; k< 250; k +=50) {
+                ctx.beginPath();
+                ctx.rect(i, k, 100, 20);
+                ctx.fillStyle = purple;
+                ctx.fill();
+             ctx.closePath();
+            }//for k
+        }//times hit
+     }//row5
+     function Bricks6() {
+        
+            ctx.beginPath();
+            ctx.rect(450, 400, 100, 20);
+            ctx.fillStyle = yellow;
+            ctx.fill();
+            ctx.closePath(); 
+        
+     }//row6
+
+}//Bricks()
+
+//---------------------------Draw everything all functions-------------------------------------------------
+
+function Move() {
+    
+    
+    if(rightPressed && StartingX < 920) {
+        StartingX += Displacement;
+    }
+    else if(leftPressed && StartingX > 0) {
+        StartingX -= Displacement;
+    }
+    
+    
+} //move
+
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+   //Ball();
+    Paddle();
+    Bricks();
+    
+    Move();
+    
+}
+
+window.addEventListener("keydown", KeyPressed,true);
+window.addEventListener("keyup", KeyReleased,true);
+setInterval(draw, 10);
+
+
+
+</script>
+
+</body>
+</html>
+
