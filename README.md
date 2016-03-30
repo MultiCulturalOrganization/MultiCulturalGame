@@ -1,2 +1,2 @@
 # The-Game-Game
-This is our game, Atari and more coming soon! Surin Rao
+We will make the greatest game in the history, this game will revolutionize the gaming industry and we will be billionaires!!!
