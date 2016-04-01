@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<htmls>
-=======
+
 <html>
->>>>>>> origin/master
 
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <title>Trivia Game</title>
-
-
-
 
 <h1 class="title" align="center">Sports Trivia!!!<h1>
 
@@ -64,7 +58,6 @@
 <body>
 <p class="p1" id="quest" align="center">Which NHL team has won the most Stanley Cups?</p>
 
-
 <div>
 	<input type="text" class="cool" id="answerKey">
 </div>
@@ -74,6 +67,7 @@
 </div>
 
 <p class="QuestionNumber" id="question" align="center">Question 1</p>
+
 <p class="Score" id="score" align="center">Score: 0</p>
 
 </body>
@@ -81,9 +75,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-
 0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-
 <script>
-
 
 var questions = ["Which NHL team has won the most Stanley Cups?", "Which NFL team is the only team with 6 Super Bowl win?", "In what year were the Toronto Raptors established as an official NBA team?", "In which year was Major League Soccer established?", "Which NBA team went on a historic 72-10 runs in the 1995-96 season?", "Who holds the NHL record for most goals in a year as a rookie?", "Which MLB team holds the record for the longest winning streak ever that doesn't include ties?", "Which NFL team won the first ever Super Bowl?", "Who is the tallest NBA player to ever play?", "Which NFL coach has the most wins in their career?", "When was the Grey Cup introduced?", "In which state has the NFL pro bowl been held each year since 1980?", "Who is the NBA all-time scoring leader", "How many 3 pointers has Shaquille O'Neal made in his career?", "Who is the shortest player to ever play in the NBA?", "Who is the person in the NBA logo supposedly of?", "Who holds the record of the fastest slapshot ever at the NHL all-star game?", "In which city is the hockey hall of fame?", "What was the name of the first woman to appear in an NHL game in 1992 for a Tampa Bay Ligthning exhibition game?", "The Anaheim Ducks are named after which movie?"]
 var cur=0;
@@ -94,11 +86,6 @@ var Scores = ["Score 0", "Score: 1", "Score: 2", "Score: 3", "Score: 4", "Score:
 
 
 $("#answerKey").change( function()  {
-
-
-
-
-
 		if(cur >= 20) {
 			alert("Congrats, you finished this topic!")
 		}
@@ -111,16 +98,10 @@ $("#answerKey").change( function()  {
 
 				$("#question").html( QuestionNumber[cur]);
 				$("#score").html(Scores[x]);
-
-
-
 		}
 		else {
 			alert("Incorrect, try again")
 		}
-
-
-
 });
 $("#Button").click(function() {
 		alert(answer[cur]);

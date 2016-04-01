@@ -50,6 +50,7 @@
 
 </head>
 <body>
+	
 <p class="p1" id="quest" align="center">Who played James Bond in the first Bond movie?</p>
 
 <div>
@@ -58,9 +59,10 @@
 
 <div class="btn-group" role="group" aria-label="...">
   <button class="cool2" type="button" class="btn btn-default" id="Button">Skip</button>
-
 </div>
+
 <p class="QuestionNumber" id="question" align="center">Question 1</p>
+
 <p class="Score" id="score" align="center">Score: 0</p>
 
 </body>
@@ -92,15 +94,10 @@ $("#answerKey").change( function()  {
 				$("#quest").html( questions[cur]);
 
 				$("#score").html(Scores[x]);
-
-
 		}
 		else {
 			alert("Incorrect, try again")
 		}
-
-
-	//}
 });
 $("#Button").click(function() {
 		alert(answer[cur]);

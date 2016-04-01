@@ -51,7 +51,6 @@
 <body>
 <p class="p1" id="quest" align="center">What is the most spoken language in the world?</p>
 
-
 <div>
 	<input type="text" class="cool" id="answerKey">
 </div>
@@ -59,7 +58,9 @@
 <div class="btn-group" role="group" aria-label="...">
   <button class="cool2" type="button" class="btn btn-default" id="Button">Skip</button>
 </div>
+
 <p class="QuestionNumber" id="question" align="center">Question 1</p>
+
 <p class="Score" id="score" align="center">Score: 0</p>
 
 </body>
@@ -77,28 +78,22 @@ var QuestionNumber = ["Question 1", "Question 2", "Question 3", "Question 4", "Q
 var Scores = ["Score 0", "Score: 1", "Score: 2", "Score: 3", "Score: 4", "Score: 5", "Score: 6", "Score: 7", "Score: 8", "Score: 9", "Score: 10", "Score: 11", "Score: 12", "Score: 13", "Score: 14", "Score: 15", "Score: 16", "Score: 17", "Score: 18", "Score: 19"]
 
 $("#answerKey").change( function()  {
-	//if (answerKey == "yes") {
 
 		if(cur >= 20) {
 			alert("Congrats, you finished this topic!")
 		}
-		//if( $(this).val() == answer[cur] ) alert("yes");
+
 		if($(this).val() == answer[cur] ){
 	  			cur = cur + 1;
 					x = x + 1;
 				$("#answerKey").val("");
 				$("#quest").html( questions[cur]);
-
 				$("#question").html( QuestionNumber[cur]);
 				$("#score").html(Scores[x]);
-
-
 		}
 		else {
 			alert("Incorrect, try again")
 		}
-
-	//}
 });
 $("#Button").click(function() {
 		alert(answer[cur]);
@@ -107,5 +102,4 @@ $("#Button").click(function() {
 		$("#question").html( QuestionNumber[cur]);
 });
 </script>
-
 </html>

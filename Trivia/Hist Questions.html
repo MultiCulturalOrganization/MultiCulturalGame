@@ -51,7 +51,6 @@
 <body>
 <p class="p1" id="quest" align="center">According to Greek mythology which Gorgon had snakes for hair and could turn onlookers into stone?</p>
 
-
 <div>
 	<input type="text" class="cool" id="answerKey">
 </div>
@@ -59,14 +58,15 @@
 <div class="btn-group" role="group" aria-label="...">
   <button class="cool2" type="button" class="btn btn-default" id="Button">Skip</button>
 </div>
+
 <p class="QuestionNumber" id="question" align="center">Question 1</p>
+
 <p class="Score" id="score" align="center">Score: 0</p>
 
 </body>
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-
 0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
 
 <script>
 var questions = ["According to Greek mythology which Gorgon had snakes for hair and could turn onlookers into stone?", "In what year did the French revolution began?", "Saint Patrick's Day was originally associated with what color?", "What island does the statue of liberty stand on?", "How many Olympic Games have been hosted in Africa?", "What was the name of the ship on which the Pilgrims travelled to North America in 1620?", "In which year did French Queen Marie Antoinette go the guillotine?", "Who killed Kennedy?", "Which US President gave the famous Gettysburg Address Speech?", "What name was given to the South African War of 1880-1881?", "During which war did Florence Nightingale attend to wounded soldiers?", "What was the name of the legendary sword of King Arthur?", "Which notorious 18th Century British pirate wore a beard and became famous for operating around the West Indies and the east coasts of the American colonies?", "Which war first introduced the use of tanks?", "What were Norsemen better known as?", "Who was the leader of the Romans when they invaded Great Britain in 55 BC?", "What was the name of the first woman to fly solo across the Atlantic?", "Which country did Iraq invade in 1990?", "Which leader famously said 'we shall fight them on the beaches'?", "During which year did Columbus discover America?"]
@@ -77,12 +77,10 @@ var QuestionNumber = ["Question 1", "Question 2", "Question 3", "Question 4", "Q
 var Scores = ["Score 0", "Score: 1", "Score: 2", "Score: 3", "Score: 4", "Score: 5", "Score: 6", "Score: 7", "Score: 8", "Score: 9", "Score: 10", "Score: 11", "Score: 12", "Score: 13", "Score: 14", "Score: 15", "Score: 16", "Score: 17", "Score: 18", "Score: 19"]
 
 $("#answerKey").change( function()  {
-	//if (answerKey == "yes") {
 
 		if(cur >= 19) {
 			alert("Congrats, you finished this topic!")
 		}
-		//if( $(this).val() == answer[cur] ) alert("yes");
 		if($(this).val() == answer[cur] ){
 	  			cur = cur + 1;
 					x = x + 1
