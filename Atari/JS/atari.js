@@ -12,7 +12,7 @@ var ColRay = ["#4b0082", "#0000ff","#009933" , "#ffff00", "#ff9900", "#cc0000"];
 //googled the colours, put into an array to be more efficient
 var white = "#ffffff";
 var pink = "#ff0066";
-
+var sound = "SOUNDS/sound_effects/pongsound.wav";
 var canvas = document.getElementById("myCanvas"); //this is the canvas
 var ctx = canvas.getContext("2d");
 var PaddleHeight = 8; //paddle height
@@ -44,6 +44,8 @@ for(var c=0; c<Rows; c++) {
         bricks[c][r] = {BallX: 0,BallY: 0, status: 1 };
     }
 }
+var pong= new Audio("SOUNDS/sound_effects/pongsound.wav");
+var ping = new Audio("SOUNDS/sound_effects/ping.wav")
 
 //------------------------------Make Background---------------------------------
 /*
@@ -123,6 +125,7 @@ function collisionDetection() {
             BallDisplacementY = -BallDisplacementY;
               b.status = 0;
               score+=10;
+              ping.play();
               if(score == 900) {
               	alert("YOU WIN, CONGRATS!");
                 document.location.reload();
@@ -186,6 +189,7 @@ function PaddleCollision() {
 		if(BallX > StartingX && BallX < StartingX + 100) {
 			BallDisplacementY = -0.95*BallDisplacementY;
 			BallDisplacementX = 12 * ((BallX-(StartingX+PaddleWidth/2))/PaddleWidth);
+      pong.play();
 		} //nested
 	}//if
 
