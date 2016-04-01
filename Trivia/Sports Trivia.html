@@ -116,6 +116,7 @@ $("#answerKey").change( function()  {
 $("#Button").click(function() {
 		alert(answer[cur]);
 		cur = cur + 1;
+		$("#answerKey").val("");
 		$("#quest").html(questions[cur]);
 		$("#question").html( QuestionNumber[cur]);
 		if(cur >= 20) {

@@ -70,7 +70,7 @@
 <p class="QuestionNumber" id="question" align="center">Question 1</p>
 
 <p class="Score" id="score" align="center">Score: 0</p>
-<p class="Help">Please capitalized the start of each word of your answer, also, please do not add a "The" before a name that doesn't need it, for example don't add the "The" for a sports team</p>
+<p class="Help">Please capitalized the start of each word of your answer, also, please do not add a "The" before a name that doesn't need it, for example don't add the "The" for a sports team. Also it is preferable to have your browser at 125% zoom</p>
 
 </body>
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
@@ -111,6 +111,7 @@ $("#answerKey").change( function()  {
 $("#Button").click(function() {
 		alert(answer[cur]);
 		cur = cur + 1;
+		$("#answerKey").val("");
 		$("#quest").html(questions[cur]);
 		$("#question").html( QuestionNumber[cur]);
 		if(cur >= 20) {
