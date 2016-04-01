@@ -268,18 +268,18 @@ function updateGameArea() {
 	// Assign random number to a variable
 	var rnd = Math.random();
 	//Spawn enemies randomly
-	if (rnd < 0.3)
+	if (rnd < 0.1)
 	{
 		x = EnemySpawn.x;
         y = EnemySpawn.y;
 		EnemyPiece.push(new component(30, 30, "http://www.starcade.tv/starcade/StarTalk/starids/users_Galaga-CapturedShip.gif", x, y, "image"));
 	}
 	//Spawn power ups randomly
-	if (rnd < 0.009)
+	if (rnd < 0.008)
 	{
 		x = EnemySpawn.x + 32;
         y = EnemySpawn.y + 32;
-		PowerUpPiece.push(new component(30, 30, "yellow", x, y));	
+		PowerUpPiece.push(new component(30, 30, "http://vignette4.wikia.nocookie.net/nitrome/images/0/07/Bounce.PNG/revision/latest/scale-to-width-down/50?cb=20150802192710", x, y, "image"));	
 	}
 	//Spawn enemies2 randomly
 	if (rnd < 0.03)
