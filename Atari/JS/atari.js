@@ -29,8 +29,6 @@ var BallDisplacementX = 3; //how much the balls x coord will change
 var BallDisplacementY = -2; //y coord change
 var x = canvas.width/2;
 var y = canvas.height-30;
-
-
 var Columns = 15;
 var Rows = 6;
 var BrickWidth = 75;
@@ -143,6 +141,8 @@ Used this idea for the link game we made a while ago
 I expanded on the algo Charlie made after the link test and applied it here
 The Row Colour change I had trouble with because
 I had it in the other for loop which was why the colours didn't change
+Got lines 152-156 from https://goo.gl/5SDgyz
+152-156 is what got the collsion working
 */
 function Bricks() {
 	for(var c=0; c<Rows; c++) {
@@ -264,7 +264,7 @@ function draw() {
 		Bricks();
 		collisionDetection();
 		Score();
-		
+
 }//draw
 
 window.addEventListener("keydown", KeyPressed,true);
