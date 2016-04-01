@@ -223,7 +223,7 @@ function updateGameArea() {
 		{
 			x = myGamePiece.x+10;
         	y = myGamePiece.y;
-			myBullet.push(new component(10, 10, "white", x, y));
+			myBullet.push(new component(10, 10, "images/bullet.png", x, y, "image"));
 			setTimeout(setShoot, 450);
 			can_shoot = false;
 		}
@@ -272,7 +272,7 @@ function updateGameArea() {
 	{
 		x = EnemySpawn.x;
         y = EnemySpawn.y;
-		EnemyPiece.push(new component(30, 30, "red", x, y));
+		EnemyPiece.push(new component(30, 30, "http://www.starcade.tv/starcade/StarTalk/starids/users_Galaga-CapturedShip.gif", x, y, "image"));
 	}
 	//Spawn power ups randomly
 	if (rnd < 0.009)
@@ -286,7 +286,7 @@ function updateGameArea() {
 	{
 		x = EnemySpawn.x;
         y = EnemySpawn.y;
-		EnemyPiece2.push(new component(16, 16, "orange", x, y));	
+		EnemyPiece2.push(new component(20, 20, "https://thelinkfund.com/uploads/78287513S763_-_8_Bit_Fire.jpg", x, y, "image"));	
 	}
 	//Spawn power ups2 randomly
 	if (rnd < 0.002)
@@ -307,6 +307,7 @@ function setPower2() {
     powerGet2 = false;
 	myGamePiece.image.src = "https://cdn.tutsplus.com/mobile/uploads/legacy/Corona-SDK_Build-Space-Shooter/1/9.png";
 }
+// Things got for first scrum: Moving ship, enemies, bullets, and dying
 // Things to add for second scrum: Increasing difficulty, power ups, fix bullet collision
 // Things to add for third scrum: background, shield power up, lives, sound if time permits
 </script>
