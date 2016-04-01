@@ -13,7 +13,7 @@
 		font-size:xx-large;
 	}
 	body{
-		background-image:url(TriviaGame.png);
+		background-image:url(IMAGES/TriviaGame.png);
 	}
 	.p1{
 		font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -31,6 +31,7 @@
 		left:450px;
 		top:200px;
 	}
+
 	.QuestionNumber {
 		color: white;
 		position: absolute;
@@ -87,6 +88,7 @@ $("#answerKey").change( function()  {
 					x = x + 1;
 				$("#answerKey").val("");
 				$("#quest").html( questions[cur]);
+
 				$("#question").html( QuestionNumber[cur]);
 				$("#score").html(Scores[x]);
 
