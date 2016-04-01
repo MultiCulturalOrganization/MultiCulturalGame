@@ -196,7 +196,7 @@ function PaddleCollision() {
 	if(BallY > 600) {
     lives--;
     if(!lives) {
-        alert("GAME OVER");
+        alert("GAME OVER. Your score was " + score);
         document.location.reload();
     }
     else {
