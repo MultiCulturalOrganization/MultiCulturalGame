@@ -35,6 +35,7 @@ var brickPadding = 1;
 var brickOffsetTop = 100;
 var brickOffsetLeft = 1;
 var score = 0;
+var lives =2;
 
 var bricks = [];
 for(var c=0; c<Rows; c++) {
@@ -189,10 +190,18 @@ function PaddleCollision() {
 	}//if
 
 	if(BallY > 600) {
-    	location.reload(); //this reloads the page, got from:  https://goo.gl/mGVKNJ
-		alert("GAME OVER");
-
-
+    lives--;
+    if(!lives) {
+        alert("GAME OVER");
+        document.location.reload();
+    }
+    else {
+        BallX = 400;
+        BallY = 500;
+        StartingX = (canvas.width-PaddleWidth)/2;
+        BallDisplacementX = 3; //how much the balls x coord will change
+        BallDisplacementY = -2; //y coord change
+    }
 	}//if
 }//PaddleCollision
 
@@ -231,11 +240,16 @@ This will draw the score in the top left of the canvas in pink size 20
 got from http://goo.gl/rTL3Yo
 */
 function Score() {
-	ctx.font = "20px Arial";
+	 ctx.font = "20px Arial";
 	 ctx.fillStyle = pink;
 	 ctx.fillText("Score: "+score, 0, 20);
 }//Score
 
+function Lives() {
+  ctx.font = "20px Arial";
+  ctx.fillStyle = pink;
+  ctx.fillText("Lives: "+lives, 0, 40);
+}
 //---------------------------Draw everything all functions----------------------
 /*
 This is drawing everything
@@ -252,6 +266,9 @@ function draw() {
 		Bricks();
 		collisionDetection();
 		Score();
+    Lives();
+
+
 
 }//draw
 
