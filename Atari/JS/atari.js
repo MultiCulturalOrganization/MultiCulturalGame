@@ -27,8 +27,27 @@ var BallX = 400; //ball starting coords
 var BallY = 500;
 var BallDisplacementX = 3; //how much the balls x coord will change
 var BallDisplacementY = -2; //y coord change
-var score=0;
-var drawseven = true;
+var x = canvas.width/2;
+var y = canvas.height-30;
+
+
+var Columns = 15;
+var Rows = 6;
+var BrickWidth = 75;
+var BrickHeight = 18;
+var brickPadding = 1;
+var brickOffsetTop = 100;
+var brickOffsetLeft = 1;
+var score = 0;
+var lives = 1;
+
+var bricks = [];
+for(var c=0; c<Rows; c++) {
+    bricks[c] = [];
+    for(var r=0; r<Columns; r++) {
+        bricks[c][r] = {BallX: 0,BallY: 0, status: 1 };
+    }
+}
 
 //------------------------------Make Background---------------------------------
 /*
@@ -97,12 +116,26 @@ function Ball() {
 /*
 When the ball its a brick play this sound:
 When the ball hits the paddle play this sound:
+got from this site: https://goo.gl/Vh1UGD
 */
-
-
-
-
-
+function collisionDetection() {
+    for(var c=0; c<Rows; c++) {
+      for(var r=0; r<Columns; r++) {
+        var b = bricks[c][r];
+        if(b.status == 1) {
+          if(BallX > b.x &&BallX < b.x+BrickWidth &&BallY > b.y &&BallY < b.y+BrickHeight) {
+            BallDisplacementY = -BallDisplacementY;
+              b.status = 0;
+              score+=10;
+              if(score == 900) {
+              	alert("YOU WIN, CONGRATS!");
+                document.location.reload();
+              }//if score
+          }//if .x checking Bricks
+        }//status
+			}//r
+  }//c
+}//collisionDetection
 
 //---------------------------------- Bricks-------------------------------------
 /*
@@ -112,7 +145,22 @@ The Row Colour change I had trouble with because
 I had it in the other for loop which was why the colours didn't change
 */
 function Bricks() {
-
+	for(var c=0; c<Rows; c++) {
+		ctx.fillStyle = ColRay[c];
+			for(var r=0; r<Columns; r++) {
+					if(bricks[c][r].status == 1) {
+							var brickX = (r*(BrickWidth+brickPadding))+brickOffsetLeft;
+							var brickY = (c*(BrickHeight+brickPadding))+brickOffsetTop;
+							bricks[c][r].x = brickX;
+							bricks[c][r].y = brickY;
+							ctx.beginPath();
+							ctx.rect(brickX, brickY, BrickWidth, BrickHeight);
+							ctx.fill();
+							ctx.closePath();
+					}
+			}
+	}
+/*
 	for(var i=0; i< 6; i++) {
 		ctx.fillStyle = ColRay[i]; //put the fill here
 		for(var j=0;j<16;j++) {
@@ -122,30 +170,7 @@ function Bricks() {
 			ctx.closePath();
 		}//j
 	}//i
-
-	if(drawseven == true){
-		BricksRow7();
-	}//if
-
-   function BricksRow7() {
-    ctx.beginPath();
-    ctx.rect(1, 216, 1138, 18);
-  	ctx.fillStyle = white;
-    ctx.fill();
-  	ctx.closePath();
-   }//row7
-
-	if(BallX >0 &&BallX < 1140) {
-		if(BallY + BallDisplacementY == 236) {
-			if(drawseven = true) {
-				BallDisplacementY = -BallDisplacementY;
-				drawseven = false;
-				score+=100;
-			}//if drawseven
-
-		}//if Y
-	}//if X
-
+*/
 }//Bricks()
 
 //------------------Colliding with Outer Box------------------------------------
@@ -237,6 +262,7 @@ function draw() {
 		Ball(); //sequential
     Move();
 		Bricks();
+		collisionDetection();
 		Score();
 		if(score==1000){
  		 alert("WIn")
