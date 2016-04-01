@@ -22,27 +22,33 @@
 
 	}
 	.cool{
-		position:absolute;
+		position:fixed;
 		left:300px;
-		top:250px;
+		top:280px;
 	}
 	.cool2{
-		position:absolute;
+		position:fixed;
 		left:450px;
-		top:200px;
+		top:400px;
 	}
 
 	.QuestionNumber {
 		color: white;
-		position: absolute;
+		position: fixed;
 		left: 180px;
 		top:420px;
 	}
 	.Score {
 		color: white;
-		position: absolute;
+		position: fixed;
 		left: 700px;
 		top:420px;
+	}
+	.Help {
+		color: cyan;
+		font-size: small;
+		position: fixed;
+		top: 490px;
 	}
 
 
@@ -50,7 +56,7 @@
 
 </head>
 <body>
-	
+
 <p class="p1" id="quest" align="center">Who played James Bond in the first Bond movie?</p>
 
 <div>
@@ -64,6 +70,7 @@
 <p class="QuestionNumber" id="question" align="center">Question 1</p>
 
 <p class="Score" id="score" align="center">Score: 0</p>
+<p class="Help">Please capitalized the start of each word of your answer, also, please do not add a "The" before a name that doesn't need it, for example don't add the "The" for a sports team</p>
 
 </body>
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
@@ -82,9 +89,11 @@ var Scores = ["Score 0", "Score: 1", "Score: 2", "Score: 3", "Score: 4", "Score:
 $("#answerKey").change( function()  {
 	//if (answerKey == "yes") {
 
-		if(cur >= 20) {
-			alert("Congrats, you finished this topic!")
-		}
+	if(cur >= 20) {
+		alert("Congrats, you finished this topic!")
+		window.location = "file:///Users/geoffrey.jiang/Desktop/MultiCulturalGame/Trivia/Trivia-jsGame.html"
+	}
+
 
 		if($(this).val() == answer[cur] ){
 	  		cur = cur + 1;
@@ -104,6 +113,11 @@ $("#Button").click(function() {
 		cur = cur + 1;
 		$("#quest").html(questions[cur]);
 		$("#question").html( QuestionNumber[cur]);
+		if(cur >= 20) {
+			alert("Congrats, you finished this topic!")
+			window.location = "file:///Users/geoffrey.jiang/Desktop/MultiCulturalGame/Trivia/Trivia-jsGame.html"
+		}
+
 });
 </script>
 
