@@ -31,7 +31,7 @@
 		left:450px;
 		top:200px;
 	}
-<<<<<<< HEAD
+
 	.QuestionNumber {
 		color: white;
 		position: absolute;
@@ -44,8 +44,7 @@
 		left: 700px;
 		top:420px;
 	}
-=======
->>>>>>> origin/master
+
 
 </style>
 
@@ -84,29 +83,23 @@ $("#answerKey").change( function()  {
 		if(cur >= 20) {
 			alert("Congrats, you finished this topic!")
 		}
-		//if( $(this).val() == answer[cur] ) alert("yes");
+
 		if($(this).val() == answer[cur] ){
 	  		cur = cur + 1;
 				x = x+1;
 				$("#question").html( QuestionNumber[cur]);
 				$("#answerKey").val("");
 				$("#quest").html( questions[cur]);
-<<<<<<< HEAD
-				$("#score").html(Scores[x]);
-=======
 
->>>>>>> origin/master
+				$("#score").html(Scores[x]);
+
 
 		}
 		else {
 			alert("Incorrect, try again")
 		}
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin/master
 	//}
 });
 $("#Button").click(function() {
