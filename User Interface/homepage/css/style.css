@@ -110,3 +110,27 @@ body {
     background-color: #799090;
   }
 }
+
+#img2 {
+  position: absolute;
+  height: 500px;
+  width: 250px;
+  top: 90px;
+  left: 60px;
+}
+
+#img3 {
+    position: absolute;
+  height: 500px;
+  width: 250px;
+  top: 90px;
+  left: 380px;
+}
+
+#img4 {
+  position: absolute;
+  height: 500px;
+  width: 250px;
+  top: 90px;
+  left: 700px;
+}
