@@ -12,21 +12,28 @@ canvas {
 <body onload="startGame()">
 <script>
 // Variables
-var myGamePiece, EnemyPiece = [];
-var PowerUpPiece = [];
+var myGamePiece, EnemyPiece = [], EnemyPiece2 = [];
+var PowerUpPiece = []
+var PowerUpPiece2 = [];
 var myBullet = [];
 var can_shoot = true;
 var EnemySpawn;
 var myScore;
+var myLives;
 var kill = 0;
-var powerGet = false;
+var powerGet = false
+var powerGet2 = false;
+var Shield;
+var image = "https://cdn.tutsplus.com/mobile/uploads/legacy/Corona-SDK_Build-Space-Shooter/1/9.png";
+var lives = 3;
 
 //Load everything once the game loads
 function startGame() {
     myGameArea.start();
-    myGamePiece = new component(30, 30, "https://cdn.tutsplus.com/mobile/uploads/legacy/Corona-SDK_Build-Space-Shooter/1/9.png", 240, 230, "image");
+    myGamePiece = new component(30, 30, image, 500, 400, "image");
 	EnemySpawn = new component(30, 30, "black", 280, 0);
 	myScore = new component("30px", "Consolas", "white", 40, 40, "text");
+	myLives = new component("30px", "Consolas", "white", 850, 40, "text");
 }
 
 //Setting up game area
@@ -111,6 +118,11 @@ function component(width, height, color, x, y, type) {
 
 //Update frames
 function updateGameArea() {
+	//Dying xddd
+	if (lives < 1)
+	{
+		myGameArea.stop();
+	}
 	// Collision bullet with enemy
 	for (i = 0; i < myBullet.length; i += 1) {
 		for (j = 0; j < EnemyPiece.length; j += 1) {
@@ -131,10 +143,34 @@ function updateGameArea() {
         if (myGamePiece.crashWith(EnemyPiece[i])) {
 			if (EnemyPiece[i].height > 0)
 			{
-				myGameArea.stop();
+				if (powerGet2 == false)
+				{
+					lives -= 1;
+					myGamePiece.x = 500;
+					myGamePiece.y = 400;
+					powerGet2 = true;
+					setTimeout(setPower2, 2500);
+				}
 			}
         } 
     }
+	// Collision player with enemy2
+	for (i = 0; i < EnemyPiece2.length; i += 1) {
+        if (myGamePiece.crashWith(EnemyPiece2[i])) {
+			if (EnemyPiece2[i].height > 0)
+			{
+				if (powerGet2 == false)
+				{
+					lives -= 1;
+					myGamePiece.x = 500;
+					myGamePiece.y = 400;
+					powerGet2 = true;
+					setTimeout(setPower2, 2500);
+				}
+			}
+        } 
+    }
+	// Collision player with power up
 	for (i = 0; i < PowerUpPiece.length; i += 1) {
         if (myGamePiece.crashWith(PowerUpPiece[i])) {
 			if (PowerUpPiece[i].height > 0)
@@ -145,6 +181,22 @@ function updateGameArea() {
 			}
         } 
     }
+	// Collision player with power up2
+	for (i = 0; i < PowerUpPiece2.length; i += 1) {
+        if (myGamePiece.crashWith(PowerUpPiece2[i])) {
+			if (PowerUpPiece2[i].height > 0)
+			{
+				powerGet2 = true;
+				PowerUpPiece2[i].height = 0;
+				PowerUpPiece2[i].width = 0;
+				setTimeout(setPower2, 5000);
+			}
+        } 
+    }
+	if (powerGet2 == true)
+	{
+		myGamePiece.image.src = "http://vignette2.wikia.nocookie.net/sonic/images/c/c4/Shield_in_Sonic_Runners.png/revision/latest?cb=20150303090220";
+	}
 	myGameArea.clear();
 	myGamePiece.speedX = 0;
     myGamePiece.speedY = 0; 
@@ -159,7 +211,9 @@ function updateGameArea() {
 	}
 	EnemySpawn.x += 39;
 	myScore.text="SCORE: " + kill;
+	myLives.text="LIVES: " + lives;
 	myScore.update();
+	myLives.update();
 	myGamePiece.newPos(); 
     myGamePiece.update();
 	EnemySpawn.update();
@@ -170,7 +224,7 @@ function updateGameArea() {
 			x = myGamePiece.x+10;
         	y = myGamePiece.y;
 			myBullet.push(new component(10, 10, "white", x, y));
-			setTimeout(setShoot, 600);
+			setTimeout(setShoot, 450);
 			can_shoot = false;
 		}
 		if (powerGet == true) // If player gets power up then shoot INFINITELY 
@@ -178,6 +232,7 @@ function updateGameArea() {
 			x = myGamePiece.x+10;
         	y = myGamePiece.y;
 			myBullet.push(new component(10, 10, "white", x, y));
+			setTimeout(setPower, 3000);
 		}
 	} 
 	// move bullets
@@ -190,10 +245,25 @@ function updateGameArea() {
         EnemyPiece[i].y -= -3;
         EnemyPiece[i].update();
     }
+	// move enemies2
+	for (i = 0; i < EnemyPiece2.length; i += 1) {
+        EnemyPiece2[i].y -= -6;
+		EnemyPiece2[i].x += 10;
+        EnemyPiece2[i].update();
+		if (EnemyPiece2[i].x > 1025)
+		{
+			EnemyPiece2[i].x = 0;	
+		}
+    }
 	// move power up
 	for (i = 0; i < PowerUpPiece.length; i += 1) {
         PowerUpPiece[i].y -= -3;
         PowerUpPiece[i].update();
+    }
+	// move power up2
+	for (i = 0; i < PowerUpPiece2.length; i += 1) {
+        PowerUpPiece2[i].y -= -3;
+        PowerUpPiece2[i].update();
     }
 	// Assign random number to a variable
 	var rnd = Math.random();
@@ -204,18 +274,41 @@ function updateGameArea() {
         y = EnemySpawn.y;
 		EnemyPiece.push(new component(30, 30, "red", x, y));
 	}
-	if (rnd < 0.02)
+	//Spawn power ups randomly
+	if (rnd < 0.009)
 	{
-		x = EnemySpawn.x + 2;
-        y = EnemySpawn.y + 2;
+		x = EnemySpawn.x + 32;
+        y = EnemySpawn.y + 32;
 		PowerUpPiece.push(new component(30, 30, "yellow", x, y));	
+	}
+	//Spawn enemies2 randomly
+	if (rnd < 0.03)
+	{
+		x = EnemySpawn.x;
+        y = EnemySpawn.y;
+		EnemyPiece2.push(new component(16, 16, "orange", x, y));	
+	}
+	//Spawn power ups2 randomly
+	if (rnd < 0.002)
+	{
+		x = EnemySpawn.x + 64;
+        y = EnemySpawn.y;
+		PowerUpPiece2.push(new component(30, 30, "blue", x, y));	
 	}
 }
 //Change it so player can shoot
 function setShoot() {
     can_shoot = true;
 }
+function setPower() {
+    powerGet = false;
+}
+function setPower2() {
+    powerGet2 = false;
+	myGamePiece.image.src = "https://cdn.tutsplus.com/mobile/uploads/legacy/Corona-SDK_Build-Space-Shooter/1/9.png";
+}
 // Things to add for second scrum: Increasing difficulty, power ups, fix bullet collision
+// Things to add for third scrum: background, shield power up, lives, sound if time permits
 </script>
 
 </body>
