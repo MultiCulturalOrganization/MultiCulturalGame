@@ -7,7 +7,7 @@ Super helpful: http://cheatsheetworld.com/programming/html5-canvas-cheat-sheet/
 /*
 These are my global variables, I also created the colours
 */
-var ColRay = ["#cc0000", "#ff9900", "#ffff00", "#009933", "#0000ff", "#4b0082"];
+var ColRay = ["#4b0082", "#0000ff","#009933" , "#ffff00", "#ff9900", "#cc0000"];
 //							 red0-		orange1-		yellow2-	green3-			blue4-		indigo5
 //googled the colours, put into an array to be more efficient
 var white = "#ffffff";
