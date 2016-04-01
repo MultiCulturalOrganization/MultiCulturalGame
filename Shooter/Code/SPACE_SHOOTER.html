@@ -26,14 +26,16 @@ var powerGet2 = false;
 var Shield;
 var image = "https://cdn.tutsplus.com/mobile/uploads/legacy/Corona-SDK_Build-Space-Shooter/1/9.png";
 var lives = 3;
+var myBackground;
 
 //Load everything once the game loads
 function startGame() {
     myGameArea.start();
     myGamePiece = new component(30, 30, image, 500, 400, "image");
-	EnemySpawn = new component(30, 30, "black", 280, 0);
+	EnemySpawn = new component(30, 30, "", 280, 0);
 	myScore = new component("30px", "Consolas", "white", 40, 40, "text");
 	myLives = new component("30px", "Consolas", "white", 850, 40, "text");
+	myBackground = new component(1025, 1000, "https://cdn.tutsplus.com/mobile/uploads/2013/10/CoronaSDK_Bullets_5.png", 0, 0, "background");
 }
 
 //Setting up game area
@@ -64,7 +66,7 @@ var myGameArea = {
 //Set coords speed and draw image
 function component(width, height, color, x, y, type) {
 	this.type = type;
-	if (type == "image") {
+	if (type == "image" || type == "background") {
     this.image = new Image();
     this.image.src = color;
   }
@@ -81,11 +83,15 @@ function component(width, height, color, x, y, type) {
       ctx.fillStyle = color;
       ctx.fillText(this.text, this.x, this.y);
 	}
-		if (type == "image") {
+		if (type == "image" || type == "background" ) {
       ctx.drawImage(this.image, 
         this.x, 
         this.y,
         this.width, this.height);
+		if (type == "background") {
+                ctx.drawImage(this.image, 
+                this.x + this.width, this.y, this.width, this.height);
+            }
 		} else {
     		ctx.fillStyle = color;
     		ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -93,7 +99,12 @@ function component(width, height, color, x, y, type) {
 	}
 	this.newPos = function() {
         this.x += this.speedX;
-        this.y += this.speedY; 
+        this.y += this.speedY;
+		if (this.type == "background") {
+            if (this.x == -(this.width)) {
+                this.x = 0;
+            }
+        } 
     } 
 	// Create hurtbox and check for collisions
 	this.crashWith = function(otherobj) {
@@ -210,6 +221,9 @@ function updateGameArea() {
 		EnemySpawn.x = 0;	
 	}
 	EnemySpawn.x += 39;
+	myBackground.speedY = -1; 
+	myBackground.newPos(); 
+    myBackground.update();
 	myScore.text="SCORE: " + kill;
 	myLives.text="LIVES: " + lives;
 	myScore.update();
