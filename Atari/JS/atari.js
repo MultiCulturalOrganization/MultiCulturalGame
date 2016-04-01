@@ -27,8 +27,6 @@ var BallX = 400; //ball starting coords
 var BallY = 500;
 var BallDisplacementX = 3; //how much the balls x coord will change
 var BallDisplacementY = -2; //y coord change
-var x = canvas.width/2;
-var y = canvas.height-30;
 var Columns = 15;
 var Rows = 6;
 var BrickWidth = 75;
@@ -37,7 +35,6 @@ var brickPadding = 1;
 var brickOffsetTop = 100;
 var brickOffsetLeft = 1;
 var score = 0;
-var lives = 1;
 
 var bricks = [];
 for(var c=0; c<Rows; c++) {
