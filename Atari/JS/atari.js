@@ -264,10 +264,7 @@ function draw() {
 		Bricks();
 		collisionDetection();
 		Score();
-		if(score==1000){
- 		 alert("WIn")
-		 location.reload();
- 	 }
+		
 }//draw
 
 window.addEventListener("keydown", KeyPressed,true);
