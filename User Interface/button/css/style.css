@@ -1,11 +1,10 @@
-body {
-  background: #082330;
-}
-
-button {
+  /*like button*/
+  /*----------------------------------*/
+  
+  button {
   position: absolute;
-  top: 475px;
-  left: 425px;
+  top: 400px;
+  left: 50px;
   width: 90px;
   height: 40px;
   background: #907979;
@@ -21,7 +20,7 @@ button {
   outline: none;
 }
 button:hover {
-  color: #84d9ff;
+  color: #799090;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
@@ -40,7 +39,7 @@ button span {
   left: 0;
   right: 0;
   margin: auto;
-  background: #84d9ff;
+  background: #799090;
   color: rgba(0, 0, 0, 0.5);
   padding: 10px 0;
   border-radius: 100px;
@@ -62,15 +61,16 @@ button span:after {
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid #84d9ff;
+  border-top: 8px solid #799090;
 }
 
-p {
-	position: absolute;
-	top:475px;
-	left:535px;
-	color: #799090;
-	font-size: 2em;
-  	font-family: 'Muli';
-  	font-weight: bold;
+#p1 {
+  position: absolute;
+  top:475px;
+  left:535px;
+  color: #799090;
+  font-size: 2em;
+    font-family: 'Muli';
+    font-weight: bold;
 }
+

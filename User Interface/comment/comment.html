@@ -10,26 +10,34 @@ put JQuery before CSS, Bootstrap is assuming that you have JQ-->
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="css/style.css">
 <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
-<button type='button' id="button1" onClick="thankyou()">
-  	Like
-  	<span>0</span>
-</button>
-<p id="p1">If you enjoyed the game<br/>please hit the like button<p>
+<html>
+  <head>
+    <meta charset="UTF-8">
+   	<link rel="stylesheet" href="css/style.css">    
+  </head>
 
-<script>
-var text = document.getElementById("p1");
+  <body>
 
-(function () {
-    $('button').click(function () {
-        $('span').html(function (i, val) {
-            return val * 1 + 1;
-        });
-    });
-}.call(this));
+  	<div class="wrapper">
+		<div class="commentBoxfloat">
+ 			<form id="cmnt">
+    			<fieldset>
+      		<div class="form_grp">
+        	<label>comment</label>
+        <textarea id="userCmnt"></textarea>        
+      </div>
+      <div class="form_grp">
+      <button type="button" id="button2">Submit</button>
+      </div>
+    </fieldset>
+  </form>  
+</div>
+  
+  <div id="cmntContr"></div>
+  </div>
+</body>
 
-function thankyou() {
-	text.innerHTML = "Thank you for your support!";
-}
-</script>
+</html>
+
+<script src="js/js.js"></script>  
