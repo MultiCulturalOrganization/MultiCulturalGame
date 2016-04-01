@@ -157,17 +157,6 @@ function Bricks() {
 					}
 			}
 	}
-/*
-	for(var i=0; i< 6; i++) {
-		ctx.fillStyle = ColRay[i]; //put the fill here
-		for(var j=0;j<16;j++) {
-			ctx.beginPath();
-			ctx.rect((j * 76) + 1,100+(i * 19) + 2, 75, 18);
-			ctx.fill();
-			ctx.closePath();
-		}//j
-	}//i
-*/
 }//Bricks()
 
 //------------------Colliding with Outer Box------------------------------------
@@ -200,8 +189,10 @@ function PaddleCollision() {
 	}//if
 
 	if(BallY > 600) {
+    	location.reload(); //this reloads the page, got from:  https://goo.gl/mGVKNJ
 		alert("GAME OVER");
-		location.reload(); //this reloads the page, got from:  https://goo.gl/mGVKNJ
+
+
 	}//if
 }//PaddleCollision
 
