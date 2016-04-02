@@ -32,10 +32,10 @@ var myBackground;
 function startGame() {
     myGameArea.start();
     myGamePiece = new component(30, 30, image, 500, 400, "image");
-	EnemySpawn = new component(30, 30, "", 280, 0);
+	EnemySpawn = new component(0, 0, "", 280, 0);
 	myScore = new component("30px", "Consolas", "white", 40, 40, "text");
 	myLives = new component("30px", "Consolas", "white", 850, 40, "text");
-	myBackground = new component(1025, 1000, "https://cdn.tutsplus.com/mobile/uploads/2013/10/CoronaSDK_Bullets_5.png", 0, 0, "background");
+	myBackground = new component(1025, 600, "https://cdn.tutsplus.com/mobile/uploads/2013/10/CoronaSDK_Bullets_5.png", 0, 0, "background");
 }
 
 //Setting up game area
@@ -90,7 +90,7 @@ function component(width, height, color, x, y, type) {
         this.width, this.height);
 		if (type == "background") {
                 ctx.drawImage(this.image, 
-                this.x + this.width, this.y, this.width, this.height);
+                this.x, this.y + this.height, this.width, this.height);
             }
 		} else {
     		ctx.fillStyle = color;
@@ -101,8 +101,8 @@ function component(width, height, color, x, y, type) {
         this.x += this.speedX;
         this.y += this.speedY;
 		if (this.type == "background") {
-            if (this.x == -(this.width)) {
-                this.x = 0;
+            if (this.y == -(this.height)) {
+                this.y = 0;
             }
         } 
     } 
