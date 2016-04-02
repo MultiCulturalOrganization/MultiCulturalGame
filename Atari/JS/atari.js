@@ -1,5 +1,5 @@
 /*
-Surin Rao  Mar 31 2016  Atari
+Surin Rao  April 1 2016  Atari
 Super helpful: http://cheatsheetworld.com/programming/html5-canvas-cheat-sheet/
 */
 
