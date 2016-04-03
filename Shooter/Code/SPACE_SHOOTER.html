@@ -27,6 +27,11 @@ var Shield;
 var image = "https://cdn.tutsplus.com/mobile/uploads/legacy/Corona-SDK_Build-Space-Shooter/1/9.png";
 var lives = 3;
 var myBackground;
+var audio = new Audio('/Users/ruemu.digba/Desktop/MultiCulturalGame/Shooter/Sound/Laser.wav');
+var music = new Audio('/Users/ruemu.digba/Desktop/MultiCulturalGame/Shooter/Sound/Drill.mp3');
+var explodeSound = new Audio('/Users/ruemu.digba/Desktop/MultiCulturalGame/Shooter/Sound/SFX_Explosion_01.wav');
+var powerUpSound = new Audio('/Users/ruemu.digba/Desktop/MultiCulturalGame/Shooter/Sound/SFX_Powerup_01.wav');
+var powerUpSound2 = new Audio('/Users/ruemu.digba/Desktop/MultiCulturalGame/Shooter/Sound/SFX_Powerup_09.wav');
 
 //Load everything once the game loads
 function startGame() {
@@ -36,6 +41,7 @@ function startGame() {
 	myScore = new component("30px", "Consolas", "white", 40, 40, "text");
 	myLives = new component("30px", "Consolas", "white", 850, 40, "text");
 	myBackground = new component(1025, 600, "https://cdn.tutsplus.com/mobile/uploads/2013/10/CoronaSDK_Bullets_5.png", 0, 0, "background");
+	music.play();
 }
 
 //Setting up game area
@@ -133,6 +139,7 @@ function updateGameArea() {
 	if (lives < 1)
 	{
 		myGameArea.stop();
+		music.pause();
 	}
 	// Collision bullet with enemy
 	for (i = 0; i < myBullet.length; i += 1) {
@@ -140,6 +147,7 @@ function updateGameArea() {
         if (EnemyPiece[j].crashWith(myBullet[i])) {
 			if (myBullet[i].height > 0)
 			{
+				explodeSound.play();
 				EnemyPiece[j].height = 0;
 				EnemyPiece[j].width = 0;
 				myBullet[i].height = 0;
@@ -156,6 +164,7 @@ function updateGameArea() {
 			{
 				if (powerGet2 == false)
 				{
+					explodeSound.play();
 					lives -= 1;
 					myGamePiece.x = 500;
 					myGamePiece.y = 400;
@@ -172,6 +181,7 @@ function updateGameArea() {
 			{
 				if (powerGet2 == false)
 				{
+					explodeSound.play();
 					lives -= 1;
 					myGamePiece.x = 500;
 					myGamePiece.y = 400;
@@ -186,6 +196,7 @@ function updateGameArea() {
         if (myGamePiece.crashWith(PowerUpPiece[i])) {
 			if (PowerUpPiece[i].height > 0)
 			{
+				powerUpSound.play();
 				powerGet = true;
 				PowerUpPiece[i].height = 0;
 				PowerUpPiece[i].width = 0;
@@ -197,6 +208,7 @@ function updateGameArea() {
         if (myGamePiece.crashWith(PowerUpPiece2[i])) {
 			if (PowerUpPiece2[i].height > 0)
 			{
+				powerUpSound2.play();
 				powerGet2 = true;
 				PowerUpPiece2[i].height = 0;
 				PowerUpPiece2[i].width = 0;
@@ -235,6 +247,7 @@ function updateGameArea() {
 	{
 		if (can_shoot == true && powerGet == false) // Check if player can shoot, if so, shoot duh
 		{
+			audio.play();
 			x = myGamePiece.x+10;
         	y = myGamePiece.y;
 			myBullet.push(new component(10, 10, "http://orig14.deviantart.net/346b/f/2014/249/9/8/orange_bullet_by_sosogirl123-d7y57ry.png", x, y, "image"));
@@ -310,17 +323,20 @@ function updateGameArea() {
 		PowerUpPiece2.push(new component(30, 30, "http://i42.tinypic.com/2cer8ex.jpg", x, y, "image"));	
 	}
 }
-//Change it so player can shoot
+// Change it so player can shoot
 function setShoot() {
     can_shoot = true;
 }
+// Change so power is lost
 function setPower() {
     powerGet = false;
 }
+// Change so power2 is lost
 function setPower2() {
     powerGet2 = false;
 	myGamePiece.image.src = "https://cdn.tutsplus.com/mobile/uploads/legacy/Corona-SDK_Build-Space-Shooter/1/9.png";
 }
+
 // Things got for first scrum: Moving ship, enemies, bullets, and dying
 // Things to add for second scrum: Increasing difficulty, power ups, fix bullet collision
 // Things to add for third scrum: background, shield power up, lives, sound if time permits
