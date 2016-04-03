@@ -168,7 +168,7 @@ function Bricks() {
 This is for when the Ball hits the outside walls and the top
 */
 function BoxCollision() {
-	if(BallX+BallDisplacementX >1130 || BallX+ BallDisplacementX+ BallRadius <0) {
+	if(BallX+BallDisplacementX >1130 || BallX+ BallDisplacementX < BallRadius) {
 		BallDisplacementX = -1.05*BallDisplacementX;
 		BallDisplacementY = 1.05*BallDisplacementY;
 	}
