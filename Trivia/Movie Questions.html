@@ -87,13 +87,6 @@ var QuestionNumber = ["Question 1", "Question 2", "Question 3", "Question 4", "Q
 var Scores = ["Score 0", "Score: 1", "Score: 2", "Score: 3", "Score: 4", "Score: 5", "Score: 6", "Score: 7", "Score: 8", "Score: 9", "Score: 10", "Score: 11", "Score: 12", "Score: 13", "Score: 14", "Score: 15", "Score: 16", "Score: 17", "Score: 18", "Score: 19"]
 
 $("#answerKey").change( function()  {
-	//if (answerKey == "yes") {
-
-	if(cur >= 19) {
-		alert("Congrats, you finished this topic!")
-		window.location = "file:///Users/geoffrey.jiang/Desktop/MultiCulturalGame/Trivia/Trivia-jsGame.html"
-	}
-
 
 		if($(this).val() == answer[cur] ){
 	  		cur = cur + 1;
@@ -101,12 +94,16 @@ $("#answerKey").change( function()  {
 				$("#question").html( QuestionNumber[cur]);
 				$("#answerKey").val("");
 				$("#quest").html( questions[cur]);
-
 				$("#score").html(Scores[x]);
+				if(cur > 18) {
+					alert("Congrats, you finished this topic!")
+					window.location = "file:///Users/geoffrey.jiang/Desktop/MultiCulturalGame/Trivia/Trivia-jsGame.html"
+				}
 		}
 		else {
 			alert("Incorrect, try again")
 		}
+
 });
 $("#Button").click(function() {
 		alert(answer[cur]);
