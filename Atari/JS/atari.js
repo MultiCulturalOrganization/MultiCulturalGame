@@ -45,7 +45,8 @@ for(var c=0; c<Rows; c++) {
     }
 }
 var pong= new Audio("SOUNDS/sound_effects/pongsound.wav");
-var ping = new Audio("SOUNDS/sound_effects/ping.wav")
+var ping = new Audio("SOUNDS/sound_effects/ping.wav");
+var music = new Audio("SOUNDS/music/music.mp3");
 
 //------------------------------Make Background---------------------------------
 /*
@@ -237,6 +238,7 @@ This is for clearing teh canvas so we don't have any "residue" (ball stays)
 */
 function clear() {
 	ctx.clearRect(0, 0, 1140, 600);
+  music.play();
 }//clear
 
 //---------------------------Draw the Score and Lives on the Canvas-----------------------
@@ -275,7 +277,6 @@ function pause() {
 This is drawing everything
 */
 function draw() {
-  if(pauseGame =true) {
 		clear();
 	 	Background(); //sequential so need to draw this first
     Paddle();
@@ -288,11 +289,6 @@ function draw() {
 		Score();
     Lives();
     pauseGame();
-  }
-
-
-
-
 }//draw
 
 window.addEventListener("keydown", KeyPressed,true);
