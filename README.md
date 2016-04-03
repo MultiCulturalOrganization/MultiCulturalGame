@@ -9,6 +9,6 @@ Our group has created a homepage which will give you access to three different
 mini games: Atari, Space Shooter, and Trivia.
 ________________________________________________________________________________
 Members:
-Geoffrey, Daniel, Ruemu, Surin
+Geoffrey, Daniel, Ruemu, Surin.
 We are MultiCultural!
 ________________________________________________________________________________
