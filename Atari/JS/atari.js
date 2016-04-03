@@ -77,7 +77,6 @@ I had a different way of doing it, but this makes the paddle move smoother,
 My way was less smooth, but the paddle still moved:
 (if... StartingX += PaddleDisplacement) was my way but too choppy
 */
-
 function KeyPressed(e) {
     if(e.keyCode == 39) {
         Right = true; //if the right arrow is pressed, sets it true
@@ -85,6 +84,7 @@ function KeyPressed(e) {
     else if(e.keyCode == 37) {
         Left = true;
     }//else if
+
 }//Pressed
 
 function KeyReleased(e) {
@@ -94,6 +94,7 @@ function KeyReleased(e) {
     else if(e.keyCode == 37) {
         Left = false;
     }//else if
+
 }//Released
 
 //----------------------Drawing the Ball----------------------------------------
@@ -238,7 +239,7 @@ function clear() {
 	ctx.clearRect(0, 0, 1140, 600);
 }//clear
 
-//---------------------------Draw the Score on the Canvas-----------------------
+//---------------------------Draw the Score and Lives on the Canvas-----------------------
 /*
 This will draw the score in the top left of the canvas in pink size 20
 got from http://goo.gl/rTL3Yo
@@ -254,12 +255,27 @@ function Lives() {
   ctx.fillStyle = pink;
   ctx.fillText("Lives: "+lives, 0, 40);
 }
+//-------------------Pause Button ----------------------------------------
+/*
+This will pause the game
+*/
+function pause() {
+    var pause = confirm("You paused the game, click 'OK/cancel' to continue");
+      if (options == true) { //Clicked on OK
+         ReDopause();
+         return;
+    }
+ }
+
+ var ReDopause = function() {
+    pause();
+ }
 //---------------------------Draw everything all functions----------------------
 /*
 This is drawing everything
 */
 function draw() {
-
+  if(pauseGame =true) {
 		clear();
 	 	Background(); //sequential so need to draw this first
     Paddle();
@@ -271,6 +287,9 @@ function draw() {
 		collisionDetection();
 		Score();
     Lives();
+    pauseGame();
+  }
+
 
 
 
