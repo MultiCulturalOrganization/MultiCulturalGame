@@ -262,15 +262,18 @@ function Lives() {
 This will pause the game
 */
 function pause() {
+  music.pause();
     var pause = confirm("You paused the game, click 'OK/cancel' to continue");
       if (options == true) { //Clicked on OK
          ReDopause();
+
          return;
     }
  }
 
  var ReDopause = function() {
     pause();
+
  }
 //---------------------------Draw everything all functions----------------------
 /*
