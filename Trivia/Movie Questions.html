@@ -70,7 +70,7 @@
 <p class="QuestionNumber" id="question" align="center">Question 1</p>
 
 <p class="Score" id="score" align="center">Score: 0</p>
-<p class="Help">Please capitalized the start of each word of your answer, also, please do not add a "The" before a name that doesn't need it, for example don't add the "The" for a sports team. Also it is preferable to have your browser at 125% zoom</p>
+<p class="Help">Please do not add a "The" before a name that doesn't need it, for example don't add the "The" for a sports team. Also it is preferable to have your browser at 125% zoom</p>
 
 </body>
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
@@ -81,21 +81,22 @@
 <script>
 var questions = ["Who played James Bond in the first bond movie?", "Who played James Bond in the latest bond movie?", "When was the first Superman movie released?", "When was the first oscars held", "At the 1929 oscars, which movie won best picture?", "What is the movie with the highest revenue ever?", "In which movie was the following quote said: 'Remember; not until the fat lady sings'", "Who is the main character in the movie frozen?", "How many movies are there in the star wars franchise?", "In 'The Silence of the Lambs' who was the actor that played Hannibal Lector?", "Who directed the movies 'Jaws', 'Schindler's List', and 'Jurassic Park'?", "In the movie 'Wayne's World', what was the name of Wayne's sidekick", "What was the name of the 1996 partly animated movie that featured Michael Jordan and Bugs Bunny?", "Drew Barrymore, Cameron Diaz and Lucy Liu starred together in which action film?", "Who refused an academy award for his role in the Godfather?", "Who has appeared in more Alfred Hitchock films than any one else?", "Which 1979 science fiction movie was advertised by the slogan 'In space, no-one can hear you scream'?", "Who starred alongside John Travolta in the movie 'Face Off'?", "What is the name of the actor that played Mr.Bean?", "Where was the majority of the Lord of the Rings trilogy filmed?"]
 var cur=0;
-var answer = ["Sean Connery", "Daniel Craig", "1978", "1929", "Wings", "Gone with the Wind", "Independence day", "Anna", "7", "Anthony Hopkins", "Steven Spielberg", "Garth", "Space Jam", "Charlie's Angels", "Marlon Brando", "Alfred Hitchock", "Alien", "Nicholas Cage", "Rowan Atkinson", "New Zealand"]
+var answer = ["sean connery", "daniel craig", "1978", "1929", "wings", "gone with the wind", "independence day", "anna", "7", "anthony hopkins", "steven spielberg", "garth", "space jam", "charlie's angels", "marlon brando", "alfred hitchock", "alien", "nicholas cage", "rowan atkinson", "new zealand"]
 var x = 0;
 var QuestionNumber = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8", "Question 9", "Question 10", "Question 11", "Question 12", "Question 13", "Question 14", "Question 15", "Question 16", "Question 17", "Question 18", "Question 19", "Question 20"]
 var Scores = ["Score 0", "Score: 1", "Score: 2", "Score: 3", "Score: 4", "Score: 5", "Score: 6", "Score: 7", "Score: 8", "Score: 9", "Score: 10", "Score: 11", "Score: 12", "Score: 13", "Score: 14", "Score: 15", "Score: 16", "Score: 17", "Score: 18", "Score: 19"]
 
+
 $("#answerKey").change( function()  {
 
-		if($(this).val() == answer[cur] ){
+		if(($(this).val()).toLowerCase() == answer[cur] ){
 	  		cur = cur + 1;
 				x = x+1;
 				$("#question").html( QuestionNumber[cur]);
 				$("#answerKey").val("");
 				$("#quest").html( questions[cur]);
 				$("#score").html(Scores[x]);
-				if(cur > 18) {
+				if(cur > 19) {
 					alert("Congrats, you finished this topic!")
 					window.location = "file:///Users/geoffrey.jiang/Desktop/MultiCulturalGame/Trivia/Trivia-jsGame.html"
 				}
