@@ -238,7 +238,7 @@ This is for clearing teh canvas so we don't have any "residue" (ball stays)
 */
 function clear() {
 	ctx.clearRect(0, 0, 1140, 600);
-  music.play();
+
 }//clear
 
 //---------------------------Draw the Score and Lives on the Canvas-----------------------
@@ -280,6 +280,7 @@ function pause() {
 This is drawing everything
 */
 function draw() {
+    music.play();
 		clear();
 	 	Background(); //sequential so need to draw this first
     Paddle();
