@@ -3,3 +3,4 @@ class hello {
     System.out.println("Welcome to MultiCultural Organization");
   }
 }
+//added this comment to show how Atom shows undocumented changes 
