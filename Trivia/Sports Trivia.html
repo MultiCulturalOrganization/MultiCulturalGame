@@ -95,7 +95,7 @@ var Scores = ["Score 0", "Score: 1", "Score: 2", "Score: 3", "Score: 4", "Score:
 
 $("#answerKey").change( function()  {
 
-		if($(this).val() == answer[cur] ){
+		if($(this).val().toLowerCase() == answer[cur] ){
 	  			cur = cur + 1;
 					x = x + 1;
 				$("#answerKey").val("");
